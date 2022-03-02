@@ -1,0 +1,6 @@
+{
+  "exec": "npm run build",
+  "ignore": [
+    "lib/*"
+  ]
+}

@@ -1,31 +1,33 @@
 {
   "name": "sarkari-scraper",
   "version": "1.0.0",
-  "description": "A web scraper made to extract results from https://www.sarkariresult.com",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/kaushalmeena1996/sarkari-scraper.git"
-  },
-  "keywords": [
-    "sarkari",
-    "scraper",
-    "axios",
-    "cheerio"
-  ],
-  "author": "",
+  "description": "A cli tool which extracts results from various sarkari job sites.",
+  "repository": "git@github.com:kaushalmeena/sarkari-scraper.git",
+  "author": "Kaushal Meena <kaushal.meena1996@gmail.com>",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/kaushalmeena1996/sarkari-scraper/issues"
+  "scripts": {
+    "start": "npm run build && npm run link && npm run build:watch",
+    "build": "npx babel src --delete-dir-on-start --out-dir lib",
+    "build:watch": "npx nodemon",
+    "lint": "npx eslint ./src",
+    "clean": "rm -rf ./lib",
+    "link": "npm link",
+    "unlink": "npm unlink",
+    "setup": "npm run build && npm run link",
+    "remove": "npm run unlink && npm run clean"
   },
-  "homepage": "https://github.com/kaushalmeena1996/sarkari-scraper#readme",
+  "bin": {
+    "sarkari-scraper": "./lib/commands/sarkari-scraper/sarkari-scraper.js"
+  },
   "dependencies": {
-    "axios": "^0.19.0",
-    "cheerio": "^1.0.0-rc.3",
-    "json2csv": "^4.5.3",
-    "table": "^5.4.6"
+    "axios": "^0.24.0",
+    "cheerio": "^1.0.0-rc.10",
+    "json2csv": "^5.0.6",
+    "table": "^6.7.3"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.16.0",
+    "@babel/core": "^7.16.0",
+    "@babel/preset-env": "^7.16.4"
   }
 }
